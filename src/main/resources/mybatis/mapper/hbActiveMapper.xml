@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.hbactive.dao.HbActiveDao">
+
+    <insert id="insertHbActive" parameterType="com.hx.hbactive.pojo.HbActive" >
+	    insert into hb_active (active_id, active_name,active_desc,create_date,update_date) values (
+	    	lpad(seq_hb_active_id.nextval,10,'0'), #{activeName,jdbcType=VARCHAR},#{activeDesc,jdbcType=VARCHAR},sysdate,sysdate
+	    )
+	</insert>
+
+	<select id="getHbActive" resultType="HbActive">
+		select * from hb_active
+	</select>
+
+	<update id="updateHbActive" parameterType="HbActive">
+		update hb_active set active_name=#{activeName}, active_desc=#{activeDesc}, update_date=sysdate where active_id=#{activeId}
+	</update>
+	<select id="getHbActiveById" parameterType="String" resultType="HbActive">
+		select * from hb_active where active_id=#{activeId}
+	</select>
+
+	<select id="getSeqCurrval" resultType="String">
+		select lpad(seq_hb_active_id.CURRVAL,10,'0') from dual
+	</select>
+</mapper>

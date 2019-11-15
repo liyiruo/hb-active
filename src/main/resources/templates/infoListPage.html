@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+list:页面select_desc
+<p th:text="'活动编码:'+${session.activeId}"></p>
+<p th:text="'活动名称:'+${session.activeName}"></p>
+<p th:text="'活动名称:'+${session.activeDesc}"></p>
+
+<table align="" border="" width="90%">
+    <tr align="center">
+        <td>活动ID</td>
+        <td>活动名称</td>
+        <td>活动描述</td>
+        <td>问题ID</td>
+        <td>问题描述</td>
+        <td>选项ID</td>
+        <td>选项描述</td>
+    </tr>
+    <tr th:each="user,userStat : ${list}" align="center">
+        <td th:text="${user.activeId}"></td>
+        <td th:text="${user.activeName}"></td>
+        <td th:text="${user.activeDesc}"></td>
+        <td th:text="${user.questionId}"></td>
+        <td th:text="${user.questtionDesc}"></td>
+        <td th:text="${user.selectId}"></td>
+        <td th:text="${user.selectDesc}"></td>
+    </tr>
+</table>
+</body>
+</html>

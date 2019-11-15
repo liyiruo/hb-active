@@ -1,0 +1,29 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.hbactive.dao.HbQuestionDao">
+
+    <insert id="insertHbQuestion" parameterType="com.hx.hbactive.pojo.HbQuestion">
+	    insert into hb_question (active_id, question_id,questtion_desc,create_date,update_date,temp) values (
+	    	#{activeId,jdbcType=VARCHAR}, #{questionId,jdbcType=VARCHAR},#{questionDesc,jdbcType=VARCHAR},#{createDate},#{updateDate },#{temp}
+	    )
+	</insert>
+
+	<!--
+
+	<select id="getHbActive" resultType="HbActive">
+		select * from hb_active
+	</select>
+
+	<update id="updateHbActive" parameterType="HbActive">
+		update hb_active set active_name=#{activeName}, active_desc=#{activeDesc}, update_date=sysdate where active_id=#{activeId}
+	</update>
+	<select id="getHbActiveById" parameterType="String" resultType="HbActive">
+		select * from hb_active where active_id=#{activeId}
+	</select>
+	-->
+
+
+
+</mapper>

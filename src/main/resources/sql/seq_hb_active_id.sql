@@ -1,0 +1,1 @@
+create sequence seq_hb_active_id increment by 1 start with 1;

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="demo"></p>
+</body>
+
+<script>
+
+
+    var EARTH_RADIUS = 6378.137;
+    function rad(d) {
+        return d * Math.PI / 180.0;
+    }
+
+    function  GetDistance(long1,  lat1,  long2,  lat2){
+        var a, b, d, sa2, sb2;
+        var lat1 = rad(lat1);
+        var lat2 = rad(lat2);
+        var  a = lat1 - lat2;
+        var  b = rad(long1 - long2);
+
+        sa2 = Math.sin(a / 2.0);
+        sb2 = Math.sin(b / 2.0);
+        d = 2* EARTH_RADIUS*Math.asin(Math.sqrt(sa2 *sa2+Math.cos(lat1)* Math.cos(lat2)*sb2*sb2));
+        return d;
+    }
+    document.getElementById("demo").innerText= GetDistance(120.433358,40.075601,140.412759,40.075222);
+</script>
+</html>

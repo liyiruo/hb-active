@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>河北回访活动配置</title>
+</head>
+<body>
+    <form id="myform">
+        <table border="1" width="95%" align="center">
+            <tr>
+                <th>问题</th>
+                <th>选项A</th>
+                <th>选项B</th>
+                <th>选项C</th>
+                <th>选项D</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="q" value=""/></td>
+                <td><input type="text" name="s1" value=""/></td>
+                <td><input type="text" name="s2" value=""/></td>
+                <td><input type="text" name="s3" value=""/></td>
+                <td><input type="text" name="s4" value=""/></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="q" value=""/></td>
+                <td><input type="text" name="s1" value=""/></td>
+                <td><input type="text" name="s2" value=""/></td>
+                <td><input type="text" name="s3" value=""/></td>
+                <td><input type="text" name="s4" value=""/></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="q" value=""/></td>
+                <td><input type="text" name="s1" value=""/></td>
+                <td><input type="text" name="s2" value=""/></td>
+                <td><input type="text" name="s3" value=""/></td>
+                <td><input type="text" name="s4" value=""/></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="q" value=""/></td>
+                <td><input type="text" name="s1" value=""/></td>
+                <td><input type="text" name="s2" value=""/></td>
+                <td><input type="text" name="s3" value=""/></td>
+                <td><input type="text" name="s4" value=""/></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="q" value=""/></td>
+                <td><input type="text" name="s1" value=""/></td>
+                <td><input type="text" name="s2" value=""/></td>
+                <td><input type="text" name="s3" value=""/></td>
+                <td><input type="text" name="s4" value=""/></td>
+            </tr>
+
+        </table>
+        <input  type="button" value="测试" onclick="getData1()" id="getData">
+    </form>
+
+
+</body>
+<script>
+    function getData1() {
+        var list=[];
+        var q = document.getElementsByName("q");
+        var s1 = document.getElementsByName("s1");
+        var s2 = document.getElementsByName("s2");
+        var s3 = document.getElementsByName("s3");
+        var s4 = document.getElementsByName("s4");
+        for (var i = 0; i < q.length; i++) {
+            var qands = {
+                q:"",
+                s1:"",
+                s2:"",
+                s3:"",
+                s4:""
+            };
+            qands.q = q[i].value;
+            qands.s1 = s1[i].value;
+            qands.s2 = s2[i].value;
+            qands.s3 = s3[i].value;
+            qands.s4 = s4[i].value;
+            console.info(qands);
+          // var qandsStr  =JSON.stringify(qands)
+           list[i]=qands;
+        }
+        var path = window.location.host;
+        alert("path-====>" + path);
+        var myJSON =  JSON.stringify(list);
+        console.info("myJSON===>" + myJSON);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.info("this.responseURL===>" + this.responseURL);
+                window.open("/infoListPage");
+            }
+        };
+        xhttp.open("POST", "/qAndSConfigPage", true);
+        xhttp.send(myJSON);
+
+    }
+</script>
+</html>

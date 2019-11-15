@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.hbactive.dao.QAndSDao">
+<resultMap id="QAndSMapper" type="QAndS" >
+    <result property="active_id" column="active_id"></result>
+    <result property="active_name" column="active_name"></result>
+    <result property="active_desc" column="active_desc"></result>
+    <result property="question_id" column="question_id"></result>
+    <result property="questtion_desc" column="questtion_desc"></result>
+    <result property="select_id" column="select_id"></result>
+    <result property="select_desc" column="select_desc"></result>
+</resultMap>
+
+
+
+    <select id="quertAllInfo" resultType="QAndS">
+		select a.active_id activeId,
+       a.active_name activeName,
+       a.active_desc activeDesc,
+       q.question_id questionId,
+       q.questtion_desc questtionDesc,
+       s.select_id selectId,
+       s.select_desc selectDesc
+  from hb_select s
+ right join hb_question q
+    on q.question_id = s.question_id
+ right join hb_active a
+    on a.active_id = q.active_id
+ order by s.select_id, a.active_id desc
+
+	</select>
+
+
+</mapper>

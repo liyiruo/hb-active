@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.hbactive.dao.HbSelectDao">
+
+    <!--就用这个来测试项目是否可以正常运行吧-->
+    <insert id="insertHbSelect" parameterType="com.hx.hbactive.pojo.HbSelect">
+	    insert into  hb_select(active_id,question_id,select_id,select_desc,temp,create_date,update_date) values (
+	    	#{activeId},#{questionId},#{selectId},#{selectDesc},#{temp},#{createDate},#{updateDate}
+	    )
+	</insert>
+
+
+	<!--
+
+	<select id="getHbActive" resultType="HbActive">
+		select * from hb_active
+	</select>
+
+	<update id="updateHbActive" parameterType="HbActive">
+		update hb_active set active_name=#{activeName}, active_desc=#{activeDesc}, update_date=sysdate where active_id=#{activeId}
+	</update>
+	<select id="getHbActiveById" parameterType="String" resultType="HbActive">
+		select * from hb_active where active_id=#{activeId}
+	</select>
+	-->
+
+
+</mapper>
